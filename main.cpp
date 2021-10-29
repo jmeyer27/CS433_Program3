@@ -17,6 +17,12 @@ int main() {
 
 
 //todo learn how to make console commands work in cpp
+//trying this?? supposed to respond to input "./filename textfilename (potential number for rr)""
+//cin next input on same line = filename
+//cin optional input for rr number
+
+
+
 //switch console commands with one of three options
 //run appropriate option
 //make sure stuff is printed out
