@@ -14,14 +14,15 @@ int main(int argc, char** argv) {
 	"Description : \n"
 	"=================================" << endl;
   Scheduler scheduler;  
-  
-
 
 
   //todo learn how to make console commands work in cpp
   //supposed to respond to input "./filename textfilename (potential number for rr)"
   string inFile = "";
   int RRnumber = 10; //setting default to 10
+  if(argc == 2){//no RRnumber, lazy code is lazy
+    inFile = argv[1];
+  }
   if(argc == 3){
     inFile = argv[1];
     //RRnumber = (int) argv[2]; TODO idk I'll fix this later or something~
@@ -35,6 +36,7 @@ int main(int argc, char** argv) {
 
 
 //switch console commands with one of three options (unless ./filename runs file by default, then this step is not included)
+//would probably switch 
 
 //run appropriate option (unless it runs itself with ./filename?)
 
