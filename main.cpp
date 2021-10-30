@@ -36,9 +36,10 @@ int main(int argc, char** argv) {
 
 
 //switch console commands with one of three options (unless ./filename runs file by default, then this step is not included)
-//would probably switch 
+//would probably switch with scheduler?
 
 //run appropriate option (unless it runs itself with ./filename?)
+//otherwise would use scheduler to run correct cpp file
 
 //make sure stuff is printed out (probably will be included in each class)
 
