@@ -16,7 +16,11 @@ int main(int argc, char** argv) {
   Scheduler scheduler;  
 
 
-  //todo learn how to make console commands work in cpp
+
+
+  //makefile run main immediately, ./ is start, next tells which file to run, next is 
+
+
   //supposed to respond to input "./filename textfilename (potential number for rr)"
   string inFile = "";
   int RRnumber = 10; //setting default to 10
