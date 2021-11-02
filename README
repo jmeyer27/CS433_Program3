@@ -1,0 +1,15 @@
+Completing this project will require writing the following CPP files:
+
+schedule_fcfs.cpp
+schedule_sjf.cpp
+schedule_rr.cpp
+schedule_priority.cpp
+schedule_priority_rr.cpp
+
+The supporting files invoke the appropriate scheduling algorithm. 
+
+For example, to build the FCFS scheduler, enter
+
+make fcfs
+
+which builds the fcfs executable file.
