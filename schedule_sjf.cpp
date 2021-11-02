@@ -27,7 +27,7 @@ Task *pickNextTask();
  *   */
 void schedule() 
 {
-	// TODO: add your implementation here
+	//implementation here
   Task *current;
 
     while (head != NULL) {

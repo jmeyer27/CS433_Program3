@@ -13,7 +13,6 @@ struct node *head = NULL;//is this legal?
  void add(char *name, int priority, int burst) 
 {
 
-  std::cout << "add fcfs is running" << std::endl;
   // first create the new task
     Task *newTask = (Task *) malloc(sizeof(Task));
 
@@ -24,28 +23,22 @@ struct node *head = NULL;//is this legal?
     // insert the new task into the list of tasks 
     insert(&head, newTask);
 }
-// 	std::cout << "add fcfs" << std::endl;
 
-// if(){}//if first in whatever this is
-//  struct node *head = NULL;
-  
-//   insert(&head, new task);
-//   //initialize information in task[0] for new task info
-//   //(for sjf make have a var for smallest burt?)
 
 
 /**
  *  * Run the FCFS scheduler
  *   */
-void schedule() //currently writing algorithm
+void schedule() 
 {
 
-  //run(Task task, burst);
-	//if list empty
-  //put next in front of list
-  //do job (run)
-  //out time
-  std::cout << "Scheduled" << std::endl;
+   Task *current;
 
+    while (head != NULL) {
+
+        run(current,current->burst);
+
+        delete(&head, current);
+    }
 
 }
