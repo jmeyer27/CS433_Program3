@@ -14,6 +14,8 @@ struct node *tmp;
 int cnt = 1;//counts how many processes have the same priority
 
 Task *pickNextTask();
+void insert_tail(struct node **head, Task *task);
+
 
 // add a new task to the list of tasks
  void add(char *name, int priority, int burst) 
@@ -36,7 +38,103 @@ Task *pickNextTask();
  */
 void schedule() 
 {
-	
+	Task *current;
+    //Task *previous;
+
+    tmp = head;
+
+    while (head != NULL) {
+        current = pickNextTask();
+        if (cnt > 1){
+            //there are duplicate priorities, run as normal round robin
+            //BUT make sure to insert at the tail
+            //we only need to insert at the tail if the burst is larger than the quantum
+            /*
+            this allows for
+            T5 for (QUANTUM) units
+            T4 for (QUANTUM) units
+            T5 for (QUANTUM) units
+            */
+            if (current->burst > QUANTUM) {
+                
+                run(current, QUANTUM);
+
+                current->burst -= QUANTUM;
+                remove(&head, current);
+                insert_tail(&head, current);
+            }
+            else {
+                run(current, current->burst);
+            
+                current->burst = 0;
+
+                printf("Task %s finished.\n",current->name);        
+                remove(&head, current);
+            }
+        }
+        else{
+            //no duplicate priorities, run as normal round robin
+            run(current, current->burst);
+            current->burst = 0;
+            printf("Task %s finished.\n",current->name);        
+            remove(&head, current);
+
+        }
+    }
+
+
+
+}
+
+
+/*
+Puts the new node at the end of the list
+*/
+void insert_tail(struct node **head, Task *task){
+    struct node* newNode = (struct node *)  malloc(sizeof(struct node));
+    newNode->task = task;
+    newNode->next = NULL;
+
+    
+    if ((*head) == NULL){
+        *head = newNode;
+        //the head is empty so we place the new node at the end of the list since head is the end
+    }
+    else{
+        //not at the end of the list, keep looking for it by traversing the list
+        struct node *tmp = *head;
+        while (tmp->next != NULL)
+            tmp = tmp->next;
+        
+        tmp->next = newNode;
+    }
+}
+
+/**
+ * Returns the next task selected to run.
+ */
+Task *pickNextTask()
+{
+
+    struct node *temp;
+    Task *hp = head->task;
+    temp = head->next;
+
+    cnt = 1;//how many processes with the same priority
+    while (temp != NULL){
+        if (temp->task->priority > hp->priority ){
+            hp = temp->task;
+            cnt = 1;//not the same priority, and bigger so reset to 1
+        }
+        else if (temp->task->priority == hp->priority){
+            cnt++;//same priority, increment
+        }
+        temp = temp->next;
+    }
+
+    return hp;
+
+ 
 }
 
 
