@@ -7,6 +7,10 @@
 #include <string.h>
 #include <iostream>
 
+
+
+#include <stack> //if this works
+
 struct node *head = NULL;//is this legal?
 
 // add a new task to the list of tasks
@@ -33,7 +37,10 @@ void schedule() //not fcfs, is absolutely lcfs
 {
 
   	//algorithm. move head/stack to new stack. then run and remove.?
+    //std::stack<task> stack;    maybe not?
 
+    //other possibility
+    //for size of list (class), add run and remove last elements
 
 
   //this can be for after stack is organized and ready to run
@@ -41,7 +48,7 @@ void schedule() //not fcfs, is absolutely lcfs
     
      while (head != NULL) {
 
-        current = head->task; //?????????
+        current = head->task; 
 
          run(current,current->burst);
 
