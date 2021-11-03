@@ -1,7 +1,7 @@
 Completing this project will require writing the following CPP files:
 
-schedule_fcfs.cpp (not yet tested but done)
-schedule_sjf.cpp (not yet tested but done)
+schedule_fcfs.cpp (needs help)
+schedule_sjf.cpp (Perfect)
 schedule_rr.cpp
 schedule_priority.cpp
 schedule_priority_rr.cpp

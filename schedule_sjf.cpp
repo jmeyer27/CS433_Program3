@@ -5,7 +5,7 @@
 #include "list.h"
 #include "cpu.h"
 
-struct node *head = NULL;//is this legal?
+struct node *head = NULL;
 Task *pickNextTask();
 
 // add a new task to the list of tasks
@@ -25,7 +25,7 @@ Task *pickNextTask();
 /**
  *  * Run the SJF scheduler
  *   */
-void schedule()  //not tested yet
+void schedule() 
 {
 	//implementation here
   Task *current;
@@ -35,7 +35,7 @@ void schedule()  //not tested yet
 
         run(current,current->burst);
 
-        delete(&head, current);
+        remove(&head, current);
     }
 }
 

@@ -32,13 +32,13 @@ struct node *head = NULL;//is this legal?
 void schedule() //not tested yet
 {
 
-   Task *current;
+    Task *current; 
+    
+     while (head != NULL) {
+        
+         run(current,current->burst);
 
-    while (head != NULL) {
-
-        run(current,current->burst);
-
-        delete(&head, current);
+         remove(&head, current);
     }
 
 }

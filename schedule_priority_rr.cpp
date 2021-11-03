@@ -18,8 +18,7 @@ Task *pickNextTask();
 // add a new task to the list of tasks
  void add(char *name, int priority, int burst) 
 {
-	// add a new task to the list of tasks
-void add(char *name, int priority, int burst) {
+
     // first create the new task
     Task *newTask = (Task *) malloc(sizeof(Task));
 
@@ -29,7 +28,7 @@ void add(char *name, int priority, int burst) {
 
     // insert the new task into the list of tasks 
     insert(&head, newTask);
-}
+
 }
 
 /**
