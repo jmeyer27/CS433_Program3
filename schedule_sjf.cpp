@@ -25,7 +25,7 @@ Task *pickNextTask();
 /**
  *  * Run the SJF scheduler
  *   */
-void schedule() 
+void schedule()  //not tested yet
 {
 	//implementation here
   Task *current;
@@ -42,7 +42,7 @@ void schedule()
 /**
  * Returns the next task selected to run.
  */
-Task *pickNextTask()
+Task *pickNextTask() 
 {
 struct node *temp;
 Task *hp = head->task;

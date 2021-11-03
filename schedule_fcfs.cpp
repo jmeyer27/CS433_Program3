@@ -29,7 +29,7 @@ struct node *head = NULL;//is this legal?
 /**
  *  * Run the FCFS scheduler
  *   */
-void schedule() 
+void schedule() //not tested yet
 {
 
    Task *current;
