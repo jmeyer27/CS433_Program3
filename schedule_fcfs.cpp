@@ -29,16 +29,23 @@ struct node *head = NULL;//is this legal?
 /**
  *  * Run the FCFS scheduler
  *   */
-void schedule() //not tested yet
+void schedule() //not fcfs, is absolutely lcfs
 {
 
+  	//algorithm. move head/stack to new stack. then run and remove.?
+
+
+
+  //this can be for after stack is organized and ready to run
     Task *current; 
     
      while (head != NULL) {
-        
+
+        current = head->task; //?????????
+
          run(current,current->burst);
 
          remove(&head, current);
     }
 
-}
+}//end schedule()
