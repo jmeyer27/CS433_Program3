@@ -6,9 +6,11 @@
 #include "cpu.h"
 #include <string.h>
 #include <iostream>
-#include <stack> //I don't remember if this is needed
+#include <stack> //I don't think this is needed
 
 struct node *head = NULL;
+
+
 
 // add a new task to the list of tasks
  void add(char *name, int priority, int burst) 
@@ -30,15 +32,6 @@ struct node *head = NULL;
  *   */
 void schedule() //not fcfs, is absolutely lcfs
 {
-
-  	//algorithm. move head/stack to new stack. then run and remove.?
-    //std::stack<task> stack;    maybe not?
-
-    //other possibility
-    //for size of list (class), add run and remove last elements
-
-
-  //this can be for after stack is organized and ready to run
     Task *current; 
     
      while (head != NULL) {

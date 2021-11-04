@@ -1,9 +1,9 @@
 Completing this project will require writing the following CPP files:
 
-schedule_fcfs.cpp (needs help w/ order) but works PERFECT :)
-schedule_sjf.cpp (everything needs time settings too) but works PERFECT :)
+schedule_fcfs.cpp 
+schedule_sjf.cpp 
 schedule_rr.cpp (needs help w/ order and add rr number thing) but works PERFECT :)
-schedule_priority.cpp (needs help w/ order) but works PERFECT :)
+schedule_priority.cpp 
 schedule_priority_rr.cpp (needs help w/ order && add rr number thing) but works PERFECT :)
 
 The supporting files invoke the appropriate scheduling algorithm. 
@@ -16,6 +16,6 @@ which builds the fcfs executable file.
 
 
 TODO:
-1. fix out of order issue, either change List from a stack to a linked list or in each add() make changes?
-2. time settings thing that is required (Turnaround time, wait time)
-3. comments. So many comments.
+1. Time settings thing that is required (Turnaround time, wait time)
+2. Comments. So many comments.
+3. The RR and PriorityRR extra parameter thing

@@ -16,9 +16,27 @@ void insert(struct node **head, Task *newTask) {
     struct node *newNode = (struct node *) malloc(sizeof(struct node));
 
     newNode->task = newTask;
-    newNode->next = *head;
-    *head = newNode;
-}
+    //old code that works, but makes this into a stack. I want a list.
+     //newNode->next = *head;
+     //*head = newNode;
+
+
+//maybe the below worked.~~~~~~~~~~~~~~~~~~~~~~~~~ :)
+    if(*head == NULL){
+        //newNode->next = *head;
+      *head = newNode;
+      newNode->next = NULL;
+    }
+    else{ 
+      newNode->next = NULL;
+      struct node *temp = *head;
+      while(temp->next != NULL){//find task with next = null
+        temp = temp->next;
+    }
+    temp->next = newNode;}
+
+
+}//end insert
 
 // delete the selected task from the list
 void remove(struct node **head, Task *task) {

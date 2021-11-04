@@ -31,30 +31,27 @@ void insertTail(struct node **head, Task *task);
  *   */
 void schedule() 
 {
-	Task *current;
+	Task *running;
    
-  while (head != NULL) {
-    current = head->task; 
+  while (head != NULL) {//while list is not empty
+    running = head->task; //set running to head of 
 
-    //tmp = head;
-
-
-    if (current->burst > QUANTUM) {
+    if (running->burst > QUANTUM) {
                 
-                run(current, QUANTUM);
+                run(running, QUANTUM);
 
-                current->burst -= QUANTUM;
-                remove(&head, current);
-                insertTail
-              (&head, current);
+                running->burst -= QUANTUM;
+                remove(&head, running);
+                add(running->name, running->priority, running->burst);
+                //insertTail(&head, running);
             }
             else {
-                run(current, current->burst);
+                run(running, running->burst);
             
-                current->burst = 0;
+                running->burst = 0;
 
-                printf("Task %s finished.\n",current->name);        
-                remove(&head, current);
+                printf("Task %s finished.\n",running->name);        
+                remove(&head, running);
             }
   }//end while
 

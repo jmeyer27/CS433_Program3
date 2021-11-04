@@ -19,7 +19,7 @@
 //main is the entry point to the program
 int main(int argc, char *argv[])
 {
-    std::cout << "CS 433 Programming assignment 3" << std::endl;
+    std::cout << "CS 433 Programming Assignment 3" << std::endl;
     std::cout << "Author: Birhane Diarra and Jasmine Meyer" << std::endl;
     std::cout << "Date: 11/5/2021" << std::endl;
     std::cout << "Course: CS433 (Operating Systems)" << std::endl;
