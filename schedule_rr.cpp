@@ -43,7 +43,6 @@ void schedule()
                 running->burst -= QUANTUM;
                 remove(&head, running);
                 add(running->name, running->priority, running->burst);
-                //insertTail(&head, running);
             }
             else {
                 run(running, running->burst);
@@ -56,38 +55,5 @@ void schedule()
   }//end while
 
 
-
-  
-    //run(current, current->burst);
-    //current->burst = 0;
-    //printf("Task %s finished.\n",current->name);        
-    //remove(&head, current);
 }
 
-
-/*
-Puts the new node at the end of the list
-*/
-void insertTail(struct node **head, Task *task){
-    struct node* newNode = (struct node *)  malloc(sizeof(struct node));
-    newNode->task = task;
-    newNode->next = NULL;
-
-    
-    if ((*head) == NULL){
-        *head = newNode;
-        //the head is empty so we place the new node at the end of the list since head is the end
-    }
-    else{
-        //not at the end of the list, keep looking for it by traversing the list
-        struct node *tmp = *head;
-        while (tmp->next != NULL)
-            tmp = tmp->next;
-        
-        tmp->next = newNode;
-    }
-}
-
-/**
- * Returns the next task selected to run.
- */

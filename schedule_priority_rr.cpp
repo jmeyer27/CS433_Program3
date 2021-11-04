@@ -10,7 +10,6 @@ struct node *tmp;
 int count = 1;//counts how many processes have the same priority
 
 Task *pickNextTask();
-void insertTail(struct node **head, Task *task);
 
 
 
@@ -33,37 +32,37 @@ void insertTail(struct node **head, Task *task);
  */
 void schedule() 
 {
-	Task *current;
+	Task *running;
     //Task *previous;
 
     tmp = head;
 
     while (head != NULL) {
-        current = pickNextTask();
+        running = pickNextTask();
         if (count > 1){
-            if (current->burst > QUANTUM) {
+            if (running->burst > QUANTUM) {
                 
-                run(current, QUANTUM);
+                run(running, QUANTUM);
 
-                current->burst -= QUANTUM;
-                remove(&head, current);
-                insertTail(&head, current);
+                running->burst -= QUANTUM;
+                remove(&head, running);
+               add(running->name, running->priority, running->burst);
             }
             else {
-                run(current, current->burst);
+                run(running, running->burst);
             
-                current->burst = 0;
+                running->burst = 0;
 
-                printf("Task %s finished.\n",current->name);        
-                remove(&head, current);
+                printf("Task %s finished.\n",running->name);        
+                remove(&head, running);
             }
         }
         else{
             //no duplicate priorities, run as normal round robin
-            run(current, current->burst);
-            current->burst = 0;
-            printf("Task %s finished.\n",current->name);        
-            remove(&head, current);
+            run(running, running->burst);
+            running->burst = 0;
+            printf("Task %s finished.\n",running->name);        
+            remove(&head, running);
 
         }
     }
@@ -73,28 +72,6 @@ void schedule()
 }
 
 
-/*
-Puts the new node at the end of the list
-*/
-void insertTail(struct node **head, Task *task){
-    struct node* newNode = (struct node *)  malloc(sizeof(struct node));
-    newNode->task = task;
-    newNode->next = NULL;
-
-    
-    if ((*head) == NULL){
-        *head = newNode;
-        //the head is empty so we place the new node at the end of the list since head is the end
-    }
-    else{
-        //not at the end of the list, keep looking for it by traversing the list
-        struct node *tmp = *head;
-        while (tmp->next != NULL)
-            tmp = tmp->next;
-        
-        tmp->next = newNode;
-    }
-}
 
 /**
  * Returns the next task selected to run.
