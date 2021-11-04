@@ -10,9 +10,6 @@ struct node *head = NULL;
 struct node *tmp;
 int count = 1;//counts how many processes have the same priority
 
-void insertTail(struct node **head, Task *task);
-
-
 // add a new task to the list of tasks
  void add(char *name, int priority, int burst) 
 {
@@ -32,19 +29,26 @@ void insertTail(struct node **head, Task *task);
 void schedule() 
 {
 	Task *running;
+  //new code underneath
+  // int runTime;
+  // if(){
+
+  // }
+
    
   while (head != NULL) {//while list is not empty
-    running = head->task; //set running to head of 
+    running = head->task; //set running to head task of list
+    
 
-    if (running->burst > QUANTUM) {
+    if (running->burst > QUANTUM) { //if task will have to be replaced into list
                 
                 run(running, QUANTUM);
 
                 running->burst -= QUANTUM;
-                remove(&head, running);
-                add(running->name, running->priority, running->burst);
+                remove(&head, running);//removes running task from list
+                add(running->name, running->priority, running->burst);//adds process that is not finished to list to be run again later
             }
-            else {
+            else { //task will finish during this runtime
                 run(running, running->burst);
             
                 running->burst = 0;

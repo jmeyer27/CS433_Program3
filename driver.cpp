@@ -13,6 +13,7 @@
 #include "task.h"
 #include "list.h"
 #include "schedulers.h"
+//#include "cpu.h"
 
 #define SIZE    100
 
@@ -35,6 +36,13 @@ int main(int argc, char *argv[])
     int burst;
 
     in = fopen(argv[1],"r");
+
+    long RRnumber = 10;
+     if(argc == 3){//get RR number from command line
+       RRnumber = strtol(argv[2], NULL, 10);
+     }
+     //runrun = RRnumber;
+
     
     while (fgets(task,SIZE,in) != NULL) {
         temp = strdup(task);

@@ -33,8 +33,6 @@ Task *pickNextTask();
 void schedule() 
 {
 	Task *running;
-    //Task *previous;
-
     tmp = head;
 
     while (head != NULL) {
@@ -62,40 +60,35 @@ void schedule()
             run(running, running->burst);
             running->burst = 0;
             printf("Task %s finished.\n",running->name);        
-            remove(&head, running);
-
-        }
-    }
-
-
+            remove(&head, running);} 
+      }
 
 }
 
 
 
 /**
- * Returns the next task selected to run.
+ * Returns task with highest priority to be run next
  */
 Task *pickNextTask()
 {
-
     struct node *temp;
-    Task *hp = head->task;
+    Task *highestPriority = head->task;
     temp = head->next;
 
     count = 1;//how many processes with the same priority
     while (temp != NULL){
-        if (temp->task->priority > hp->priority ){
-            hp = temp->task;
+        if (temp->task->priority > highestPriority->priority ){
+            highestPriority = temp->task;
             count = 1;//not the same priority, and bigger so reset to 1
         }
-        else if (temp->task->priority == hp->priority){
+        else if (temp->task->priority == highestPriority->priority){
             count++;//same priority, increment
         }
         temp = temp->next;
     }
 
-    return hp;
+    return highestPriority;
 
  
 }

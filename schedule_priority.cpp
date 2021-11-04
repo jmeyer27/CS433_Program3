@@ -5,7 +5,7 @@
 #include "list.h"
 #include "cpu.h"
 
-Task *pickNextTask();
+Task *pickNextTask();//chooses task of highest priority to be run next
 struct node *head = NULL;
 // pointer to the struct containing the next task
 struct node *tmp;
@@ -31,10 +31,8 @@ int count = 1;//counts how many processes have the same priority
  */
 void schedule()
 {
-	// TODO: add your implementation here
   Task *current;
     
-
     tmp = head;
 
      while (head != NULL) {
@@ -53,24 +51,23 @@ void schedule()
  */
 Task *pickNextTask()
 {
-
     struct node *temp;
-    Task *highPriority = head->task;
+    Task *highestPriority = head->task;
     temp = head->next;
 
     count = 1;//how many processes with the same priority
     while (temp != NULL){
-        if (temp->task->priority > highPriority->priority ){
-            highPriority = temp->task;
+        if (temp->task->priority > highestPriority->priority ){
+            highestPriority = temp->task;
             count = 1;//not the same priority, and bigger so reset to 1
         }
-        else if (temp->task->priority == highPriority->priority){
+        else if (temp->task->priority == highestPriority->priority){
             count++;//same priority, increment
         }
         temp = temp->next;
     }
 
-    return highPriority;
+    return highestPriority;
 
  
 }
