@@ -6,28 +6,23 @@
 #include "cpu.h"
 
 
-
 struct node *head = NULL;
-
-// pointer to the struct containing the next task
 struct node *tmp;
+int count = 1;//counts how many processes have the same priority
 
-int cnt = 1;//counts how many processes have the same priority
+void insertTail(struct node **head, Task *task);
 
-//Task *pickNextTask();
-void insert_tail(struct node **head, Task *task);//
 
 // add a new task to the list of tasks
  void add(char *name, int priority, int burst) 
 {
-	 // first create the new task
+	 //make new task and initialize
     Task *newTask = (Task *) malloc(sizeof(Task));
-
     newTask->name = name;
     newTask->priority = priority;
     newTask->burst = burst;
 
-    // insert the new task into the list of tasks 
+    //insert task into list
     insert(&head, newTask);
 }
 
@@ -50,7 +45,8 @@ void schedule()
 
                 current->burst -= QUANTUM;
                 remove(&head, current);
-                insert_tail(&head, current);
+                insertTail
+              (&head, current);
             }
             else {
                 run(current, current->burst);
@@ -75,7 +71,7 @@ void schedule()
 /*
 Puts the new node at the end of the list
 */
-void insert_tail(struct node **head, Task *task){
+void insertTail(struct node **head, Task *task){
     struct node* newNode = (struct node *)  malloc(sizeof(struct node));
     newNode->task = task;
     newNode->next = NULL;

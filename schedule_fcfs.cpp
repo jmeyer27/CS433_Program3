@@ -6,25 +6,20 @@
 #include "cpu.h"
 #include <string.h>
 #include <iostream>
+#include <stack> //I don't remember if this is needed
 
-
-
-#include <stack> //if this works
-
-struct node *head = NULL;//is this legal?
+struct node *head = NULL;
 
 // add a new task to the list of tasks
  void add(char *name, int priority, int burst) 
 {
-
-  // first create the new task
+  //make new task and initialize
     Task *newTask = (Task *) malloc(sizeof(Task));
-
     newTask->name = name;
     newTask->priority = priority;
     newTask->burst = burst;
 
-    // insert the new task into the list of tasks 
+    //insert task into list
     insert(&head, newTask);
 }
 

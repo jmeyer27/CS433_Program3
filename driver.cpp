@@ -1,10 +1,9 @@
-/**
- * Driver.cpp
- *
- * Schedule is in the format
- *
- *  [name] [priority] [CPU burst]
- */
+//=========================================================
+//CS 433 Assignment 3
+//Your names: Jasmine Meyer and Birhane Diarra
+//File type: driver.cpp
+//Purpose: 
+//===========================================================
 
 #include <stdio.h>
 #include <stdlib.h>
