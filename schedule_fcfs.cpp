@@ -20,6 +20,8 @@ struct node *head = NULL;
     newTask->name = name;
     newTask->priority = priority;
     newTask->burst = burst;
+    newTask->turnaroundTime = 0;
+    newTask->waitingTime = 0;
 
     //insert task into list
     insert(&head, newTask);
@@ -30,17 +32,24 @@ struct node *head = NULL;
 /**
  *  * Run the FCFS scheduler
  *   */
-void schedule() //not fcfs, is absolutely lcfs
+void schedule()
 {
-    Task *current; 
+     Task *current; 
+    // int timeLine = 0;
+    // double averageTurnaroundTime = 0;
+    // double averageWaitingTime = 0;
+
     
      while (head != NULL) {
 
         current = head->task; 
-
          run(current,current->burst);
-
+         //int timeLine =+ current->burst;//move timeline
          remove(&head, current);
+
     }
+
+    //print each turnaround and waiting time
+    //average turnaroundtime & average waiting time
 
 }//end schedule()

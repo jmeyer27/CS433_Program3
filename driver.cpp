@@ -13,7 +13,7 @@
 #include "task.h"
 #include "list.h"
 #include "schedulers.h"
-//#include "cpu.h"
+
 
 #define SIZE    100
 
@@ -37,12 +37,11 @@ int main(int argc, char *argv[])
 
     in = fopen(argv[1],"r");
 
-    long RRnumber = 10;
+    int RRnumber = 10;
      if(argc == 3){//get RR number from command line
-       RRnumber = strtol(argv[2], NULL, 10);
+       RRnumber = atoi(argv[2]);
      }
-     //runrun = RRnumber;
-
+      
     
     while (fgets(task,SIZE,in) != NULL) {
         temp = strdup(task);
@@ -58,6 +57,7 @@ int main(int argc, char *argv[])
 
     fclose(in);
 
+    
     // invoke the scheduler
     schedule();
     
