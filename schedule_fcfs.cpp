@@ -9,10 +9,11 @@
 #include <stack> //I don't think this is needed
 
 struct node *head = NULL;
+struct node *shoulders = NULL;
 
 
 
-// add a new task to the list of tasks
+// Add a new task to the list of tasks
  void add(char *name, int priority, int burst) 
 {
   //make new task and initialize
@@ -22,6 +23,7 @@ struct node *head = NULL;
     newTask->burst = burst;
     newTask->turnaroundTime = 0;
     newTask->waitingTime = 0;
+    newTask->lastRunTime = 0;//not really needed in fcfs but included
 
     //insert task into list
     insert(&head, newTask);
@@ -35,21 +37,51 @@ struct node *head = NULL;
 void schedule()
 {
      Task *current; 
-    // int timeLine = 0;
-    // double averageTurnaroundTime = 0;
-    // double averageWaitingTime = 0;
+     int timeLine = 0;
+     double averageTurnaroundTime = 0;
+     double averageWaitingTime = 0;
 
     
      while (head != NULL) {
 
-        current = head->task; 
+        current = head->task;
+        current->waitingTime = (timeLine - current->lastRunTime) + current->waitingTime;//for fcfs will just be (timeline-0)+0 = timeline. Others will not be.
          run(current,current->burst);
-         //int timeLine =+ current->burst;//move timeline
+         timeLine += current->burst;//move timeline
          remove(&head, current);
+         //current->lastRunTime += timeLine; not needed for fcfs
+         current->turnaroundTime = timeLine;//fcfs turnaroundtime is time passed until finished.
+         //figure out a way to keep data
+
+
+      Task *newTask = (Task *) malloc(sizeof(Task));
+      newTask->name = current->name;
+      newTask->priority = current->priority;
+      newTask->burst = current->burst;
+      newTask->turnaroundTime = current->turnaroundTime;
+      newTask->waitingTime = current->waitingTime;
+      newTask->lastRunTime = 0;//not really needed in fcfs but included
+
+    //insert task into list
+    insert(&shoulders, newTask);
 
     }
 
-    //print each turnaround and waiting time
-    //average turnaroundtime & average waiting time
+    struct node *temp;
+    temp = shoulders;
+    int averageCounter = 0;
+
+    while(temp != NULL){
+      averageTurnaroundTime += temp->task->turnaroundTime;
+      averageWaitingTime += temp->task->waitingTime;
+      averageCounter++;
+      std::cout <<temp->task->name << " turn-around time = " << temp->task->turnaroundTime << ", waiting time = " << temp->task->waitingTime<< std::endl;
+      remove(&shoulders, temp->task);
+      temp = temp->next;
+    }
+    
+    averageTurnaroundTime = (averageTurnaroundTime/averageCounter);
+    averageWaitingTime =  (averageWaitingTime/averageCounter);
+    std::cout << "Average turn-around time = " << averageTurnaroundTime << ", Average waiting time = " << averageWaitingTime << std::endl;
 
 }//end schedule()

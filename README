@@ -1,10 +1,10 @@
 Completing this project will require writing the following CPP files:
 
-schedule_fcfs.cpp 
+schedule_fcfs.cpp (complete)
 schedule_sjf.cpp 
-schedule_rr.cpp (needs help w/ order and add rr number thing) but works PERFECT :)
+schedule_rr.cpp (add rr number thing)
 schedule_priority.cpp 
-schedule_priority_rr.cpp (needs help w/ order && add rr number thing) but works PERFECT :)
+schedule_priority_rr.cpp (add rr number thing)
 
 The supporting files invoke the appropriate scheduling algorithm. 
 
