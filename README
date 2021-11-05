@@ -1,7 +1,7 @@
 Completing this project will require writing the following CPP files:
 
 schedule_fcfs.cpp (complete)
-schedule_sjf.cpp 
+schedule_sjf.cpp (complete)
 schedule_rr.cpp (add rr number thing)
 schedule_priority.cpp 
 schedule_priority_rr.cpp (add rr number thing)

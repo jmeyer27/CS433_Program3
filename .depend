@@ -1,0 +1,8 @@
+driver.o: driver.cpp task.h list.h schedulers.h
+schedule_fcfs.o: schedule_fcfs.cpp task.h list.h cpu.h
+schedule_rr.o: schedule_rr.cpp task.h list.h cpu.h
+schedule_sjf.o: schedule_sjf.cpp task.h list.h cpu.h
+schedule_priority.o: schedule_priority.cpp task.h list.h cpu.h
+schedule_priority_rr.o: schedule_priority_rr.cpp task.h list.h cpu.h
+list.o: list.cpp list.h task.h
+CPU.o: CPU.cpp task.h

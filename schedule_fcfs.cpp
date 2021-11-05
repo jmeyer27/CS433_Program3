@@ -50,7 +50,7 @@ void schedule()
          remove(&head, current);
          //current->lastRunTime += timeLine; not needed for fcfs
          current->turnaroundTime = timeLine;//fcfs turnaroundtime is time passed until finished.
-         //figure out a way to keep data
+
 
 
       Task *newTask = (Task *) malloc(sizeof(Task));
