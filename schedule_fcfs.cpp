@@ -6,7 +6,6 @@
 #include "cpu.h"
 #include <string.h>
 #include <iostream>
-#include <stack> //I don't think this is needed
 
 struct node *head = NULL;
 struct node *shoulders = NULL;
