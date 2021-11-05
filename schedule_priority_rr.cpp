@@ -6,6 +6,7 @@
 #include "cpu.h"
 
 struct node *head = NULL;
+struct node *shoulders = NULL;
 struct node *tmp;
 int count = 1;//counts how many processes have the same priority
 
@@ -34,6 +35,9 @@ void schedule()
 {
 	Task *running;
     tmp = head;
+    int timeLine = 0;
+    double averageTurnaroundTime = 0;
+    double averageWaitingTime = 0;
 
     while (head != NULL) {
         running = pickNextTask();

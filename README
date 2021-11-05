@@ -2,9 +2,9 @@ Completing this project will require writing the following CPP files:
 
 schedule_fcfs.cpp (complete)
 schedule_sjf.cpp (complete)
-schedule_rr.cpp (add rr number thing)
-schedule_priority.cpp 
-schedule_priority_rr.cpp (add rr number thing)
+schedule_rr.cpp (add rr number thing) 
+schedule_priority.cpp (complete)
+schedule_priority_rr.cpp (add rr number thing)(turnaround/wait time)
 
 The supporting files invoke the appropriate scheduling algorithm. 
 

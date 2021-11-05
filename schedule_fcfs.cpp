@@ -64,7 +64,7 @@ void schedule()
     //insert task into list
     insert(&shoulders, newTask);
 
-    }
+    }//end while
 
     struct node *temp;
     temp = shoulders;
