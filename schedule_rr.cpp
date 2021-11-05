@@ -70,7 +70,7 @@ void schedule()
                 newTask->burst = running->burst;
                 newTask->turnaroundTime = running->turnaroundTime;
                 newTask->waitingTime = running->waitingTime;
-                newTask->lastRunTime = 0;//not really needed in fcfs but included
+                newTask->lastRunTime = 0;
 
                 //insert task into list
                 insert(&shoulders, newTask);
