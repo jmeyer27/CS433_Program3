@@ -1,10 +1,10 @@
 Completing this project will require writing the following CPP files:
 
-schedule_fcfs.cpp (complete)
-schedule_sjf.cpp (complete)
-schedule_rr.cpp (add rr number thing) 
-schedule_priority.cpp (complete)
-schedule_priority_rr.cpp (add rr number thing)(turnaround/wait time)
+schedule_fcfs.cpp 
+schedule_sjf.cpp
+schedule_rr.cpp 
+schedule_priority.cpp 
+schedule_priority_rr.cpp
 
 The supporting files invoke the appropriate scheduling algorithm. 
 
@@ -15,7 +15,3 @@ make fcfs
 which builds the fcfs executable file.
 
 
-TODO:
-1. Time settings thing that is required (Turnaround time, wait time)
-2. Comments. So many comments.
-3. The RR and PriorityRR extra parameter thing

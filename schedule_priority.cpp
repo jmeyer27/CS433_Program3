@@ -1,3 +1,9 @@
+//=========================================================
+//CS 433 Assignment 3
+//Your names: Jasmine Meyer and Birhane Diarra
+//File type: Priority  Scheduling file
+//Purpose: Priority  Scheduler schedules tasks to be run by priority.
+//===========================================================
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -51,15 +57,16 @@ void schedule()
           run(current,current->burst);
           timeLine += current->burst;//move timeline
           remove(&head, current);
-          current->turnaroundTime = timeLine;//fcfs turnaroundtime is time passed until finished.
-
+          current->turnaroundTime = timeLine;
+          
+        //place finished task into list so data can be averaged and printed out
           Task *newTask = (Task *) malloc(sizeof(Task));
-      newTask->name = current->name;
-      newTask->priority = current->priority;
-      newTask->burst = current->burst;
-      newTask->turnaroundTime = current->turnaroundTime;
-      newTask->waitingTime = current->waitingTime;
-      newTask->lastRunTime = 0;//not really needed in fcfs but included
+          newTask->name = current->name;
+          newTask->priority = current->priority;
+          newTask->burst = current->burst;
+          newTask->turnaroundTime = current->turnaroundTime;
+          newTask->waitingTime = current->waitingTime;
+          newTask->lastRunTime = 0;
 
     //insert task into list
     insert(&shoulders, newTask);

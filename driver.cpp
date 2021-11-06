@@ -2,7 +2,7 @@
 //CS 433 Assignment 3
 //Your names: Jasmine Meyer and Birhane Diarra
 //File type: driver.cpp
-//Purpose: 
+//Purpose: This program will simulate tasks being run with different scheduling algorithms. It will also calculate the waiting time and turnaround time for each task, and average these numbers for the entire program. 
 //===========================================================
 
 #include <stdio.h>
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     std::cout << "Author: Birhane Diarra and Jasmine Meyer" << std::endl;
     std::cout << "Date: 11/5/2021" << std::endl;
     std::cout << "Course: CS433 (Operating Systems)" << std::endl;
-    std::cout << "Description : **** " << std::endl;
+    std::cout << "Description : This program will simulate tasks being run with different scheduling algorithms. It will also calculate the waiting time and turnaround time for each task, and average these numbers for the entire program. " << std::endl;
     std::cout << "=================================" << std::endl;
 
     FILE *in;

@@ -1,3 +1,9 @@
+//=========================================================
+//CS 433 Assignment 3
+//Your names: Jasmine Meyer and Birhane Diarra
+//File type: FCFS Scheduling file
+//Purpose: FCFS Scheduler schedules tasks to be run in order until completed.
+//===========================================================
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -52,7 +58,7 @@ void schedule()
          current->turnaroundTime = timeLine;//fcfs turnaroundtime is time passed until finished.
 
 
-
+      //place finished task into list so data can be averaged and printed out
       Task *newTask = (Task *) malloc(sizeof(Task));
       newTask->name = current->name;
       newTask->priority = current->priority;

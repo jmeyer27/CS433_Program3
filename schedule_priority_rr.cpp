@@ -1,3 +1,9 @@
+//=========================================================
+//CS 433 Assignment 3
+//Your names: Jasmine Meyer and Birhane Diarra
+//File type: Priority RR Scheduling file
+//Purpose: Priority RR Scheduler schedules tasks to be run by priority. If the priority of more than one task is the same, then the tasks are run in RR scheduling. If there is only one task with the highest priority in the list, then it is schedules FCFS.
+//===========================================================
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -50,12 +56,12 @@ void schedule()
         if (count > 1){//if multiple tasks have same priority, is run as round robin
             if (running->burst > QUANTUM) {
                 
-                run(running, QUANTUM);
+                run(running, QUANTUM);//run program
                 timeLine += QUANTUM;//move timeline
-                running->burst -= QUANTUM;
-                remove(&head, running);
-               add(running->name, running->priority, running->burst);
-               running->lastRunTime += timeLine;
+                running->burst -= QUANTUM;//update remaining burts
+                remove(&head, running);//remove from list
+                add(running->name, running->priority, running->burst);//add to end of list
+                running->lastRunTime += timeLine;//update the last run time after it is placed
                
             }
             else {//process

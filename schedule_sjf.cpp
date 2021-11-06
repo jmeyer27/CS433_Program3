@@ -1,3 +1,9 @@
+//=========================================================
+//CS 433 Assignment 3
+//Your names: Jasmine Meyer and Birhane Diarra
+//File type: SJF  Scheduling file
+//Purpose: SJF  Scheduler schedules tasks so the task with the shortest burst time always runs next.
+//===========================================================
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -47,17 +53,17 @@ void schedule()
 
          timeLine += current->burst;//move timeline
         remove(&head, current);//removes task when completed
-        //current->lastRunTime += timeLine; not needed for fcfs
-         current->turnaroundTime = timeLine;//fcfs turnaroundtime is time passed until finished.
+        //current->lastRunTime += timeLine; not needed for sjf
+         current->turnaroundTime = timeLine;
 
-
+      //place finished task into list so data can be averaged and printed out
       Task *newTask = (Task *) malloc(sizeof(Task));
       newTask->name = current->name;
       newTask->priority = current->priority;
       newTask->burst = current->burst;
       newTask->turnaroundTime = current->turnaroundTime;
       newTask->waitingTime = current->waitingTime;
-      newTask->lastRunTime = 0;//not really needed in fcfs but included
+      newTask->lastRunTime = 0;
 
     //insert task into list
     insert(&shoulders, newTask);

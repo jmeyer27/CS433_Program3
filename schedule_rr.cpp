@@ -1,3 +1,9 @@
+//=========================================================
+//CS 433 Assignment 3
+//Your names: Jasmine Meyer and Birhane Diarra
+//File type: RR  Scheduling file
+//Purpose: RR  Scheduler schedules tasks to be run in order in specified time slices. If task runs and is not completed, then it is placed back into the list to be run again.
+//===========================================================
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -62,8 +68,10 @@ void schedule()
 
                 printf("Task %s finished.\n",running->name);        
                 remove(&head, running);
-                running->turnaroundTime = timeLine;//potentially wrong
+                running->turnaroundTime = timeLine;
 
+
+                //place finished task into list so data can be averaged and printed out
                 Task *newTask = (Task *) malloc(sizeof(Task));
                 newTask->name = running->name;
                 newTask->priority = running->priority;

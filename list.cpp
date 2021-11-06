@@ -16,24 +16,24 @@ void insert(struct node **head, Task *newTask) {
     struct node *newNode = (struct node *) malloc(sizeof(struct node));
 
     newNode->task = newTask;
-    //old code that works, but makes this into a stack. I want a list.
+    //old code that works, but makes the list into a stack. I want a list.
      //newNode->next = *head;
      //*head = newNode;
 
 
-//maybe the below worked.~~~~~~~~~~~~~~~~~~~~~~~~~ :)
-    if(*head == NULL){
+    //This is basically a linked list 
+    if(*head == NULL){//there is no head, list is empty
         //newNode->next = *head;
       *head = newNode;
       newNode->next = NULL;
     }
-    else{ 
+    else{ //list has elements, must add to back
       newNode->next = NULL;
       struct node *temp = *head;
-      while(temp->next != NULL){//find task with next = null
+      while(temp->next != NULL){//find task with next = null (end of list)
         temp = temp->next;
     }
-    temp->next = newNode;}
+    temp->next = newNode;}//last element is the new node.
 
 
 }//end insert
