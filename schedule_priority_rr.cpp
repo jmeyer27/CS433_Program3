@@ -22,7 +22,11 @@ Task *pickNextTask();
 
 
 
-// adds a new task to the list of tasks
+//Add a new task to the list of tasks
+//Parameters: char *name is the name of the task
+//int priority = priority of task
+//int burst = length of burst that task still has left to run
+//int quantum = the quantum time allowed for each burst (used in RR schedulers)
  void add(char *name, int priority, int burst, int quantum) 
 {
     //make new task and initialize

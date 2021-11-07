@@ -19,7 +19,11 @@ struct node *shoulders = NULL;
 struct node *tmp;
 int count = 1;//counts how many processes have the same priority
 
-// add a new task to the list of tasks
+//Add a new task to the list of tasks
+//Parameters: char *name is the name of the task
+//int priority = priority of task
+//int burst = length of burst that task still has left to run
+//int quantum = the quantum time allowed for each burst (used in RR schedulers)
  void add(char *name, int priority, int burst, int quantum) 
 {
 	 //make new task and initialize
@@ -45,10 +49,6 @@ void schedule()
   int timeLine = 0;
   double averageTurnaroundTime = 0;
   double averageWaitingTime = 0;
-
-  
-  
-
    
   while (head != NULL) {//while list is not empty
     running = head->task; //set running to head task of list
