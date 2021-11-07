@@ -16,13 +16,14 @@ void insert(struct node **head, Task *newTask) {
     struct node *newNode = (struct node *) malloc(sizeof(struct node));
 
     newNode->task = newTask;
-    //old code that works, but makes the list into a stack. I want a list.
+
+    //old method that works, but makes the list into a stack. I want a list to keep the tasks FCFS
      //newNode->next = *head;
      //*head = newNode;
 
 
     //This is basically a linked list 
-    if(*head == NULL){//there is no head, list is empty
+    if(*head == NULL){//if there is no head, the list is empty
         //newNode->next = *head;
       *head = newNode;
       newNode->next = NULL;
@@ -33,7 +34,8 @@ void insert(struct node **head, Task *newTask) {
       while(temp->next != NULL){//find task with next = null (end of list)
         temp = temp->next;
     }
-    temp->next = newNode;}//last element is the new node.
+    temp->next = newNode;//last element is now the new node.
+    }//end else
 
 
 }//end insert

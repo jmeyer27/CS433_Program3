@@ -35,10 +35,10 @@ int main(int argc, char *argv[])
     int priority;
     int burst;
 
-    in = fopen(argv[1],"r");
+    in = fopen(argv[1],"r");//gets arguments from command line
 
     int RRnumber = 10;
-     if(argc == 3){//get RR number from command line
+     if(argc == 3){//get RR number from command line, if argument count = 3
        RRnumber = atoi(argv[2]);
      }
       
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
     fclose(in);
 
     
-    // invoke the scheduler
+    // invoke the scheduler for specified scheduler program
     schedule();
     
 

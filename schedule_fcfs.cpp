@@ -2,7 +2,7 @@
 //CS 433 Assignment 3
 //Your names: Jasmine Meyer and Birhane Diarra
 //File type: FCFS Scheduling file
-//Purpose: FCFS Scheduler schedules tasks to be run in order until completed.
+//Purpose: FCFS Scheduler schedules tasks to be run in order added until completed.
 //===========================================================
 #include <stdlib.h>
 #include <stdio.h>

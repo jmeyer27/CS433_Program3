@@ -20,8 +20,6 @@ int count = 1;//counts how many processes have the same priority
 
 Task *pickNextTask();
 
-
-
 //Add a new task to the list of tasks
 //Parameters: char *name is the name of the task
 //int priority = priority of task
@@ -57,20 +55,20 @@ void schedule()
 
     while (head != NULL) {
         running = pickNextTask();//picks next task
-        running->waitingTime = (timeLine - running->lastRunTime) + running->waitingTime;
-        if (count > 1){//if multiple tasks have same priority, is run as round robin
+        running->waitingTime = (timeLine - running->lastRunTime) + running->waitingTime;//yucky
+        if (count > 1){//if multiple tasks have same priority, it is run as RR scheduler for those tasks
         int quantumTime = running->quantumTime;
-            if (running->burst > quantumTime) {
+            if (running->burst > quantumTime) {//process to be reinserted into list
                 
                 run(running, quantumTime);//run program
                 timeLine += quantumTime;//move timeline
                 running->burst -= quantumTime;//update remaining burts
                 remove(&head, running);//remove from list
-                add(running->name, running->priority, running->burst,running->quantumTime);//add to end of list
+                add(running->name, running->priority, running->burst,running->quantumTime);//add task to end of list
                 running->lastRunTime += timeLine;//update the last run time after it is placed
                
             }
-            else {//process
+            else {//process to end
                 run(running, running->burst);
                 timeLine += running->burst;//move timeline
                 running->burst = 0;
