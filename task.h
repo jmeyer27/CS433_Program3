@@ -14,6 +14,7 @@ typedef struct task {
     int waitingTime;
     int turnaroundTime;
     int lastRunTime;
+    int quantumTime;
 } Task;
 
 #endif

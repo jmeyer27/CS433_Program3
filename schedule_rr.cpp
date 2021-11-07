@@ -20,7 +20,7 @@ struct node *tmp;
 int count = 1;//counts how many processes have the same priority
 
 // add a new task to the list of tasks
- void add(char *name, int priority, int burst) 
+ void add(char *name, int priority, int burst, int quantum) 
 {
 	 //make new task and initialize
     Task *newTask = (Task *) malloc(sizeof(Task));
@@ -30,6 +30,7 @@ int count = 1;//counts how many processes have the same priority
     newTask->turnaroundTime = 0;
     newTask->waitingTime = 0;
     newTask->lastRunTime = 0;
+    newTask->quantumTime = quantum;
 
     //insert task into list
     insert(&head, newTask);
@@ -44,21 +45,24 @@ void schedule()
   int timeLine = 0;
   double averageTurnaroundTime = 0;
   double averageWaitingTime = 0;
+
+  
   
 
    
   while (head != NULL) {//while list is not empty
     running = head->task; //set running to head task of list
+    int quantumTime = running->quantumTime;
     running->waitingTime = (timeLine - running->lastRunTime) + running->waitingTime;//for fcfs will just be (timeline-0)+0 = timeline. Others will not be.
     
 
-    if (running->burst > QUANTUM) { //if task will have to be replaced into list
-                timeLine += QUANTUM;//move timeline QUANTUM units
-                run(running, QUANTUM);
+    if (running->burst > quantumTime) { //if task will have to be replaced into list
+                timeLine += quantumTime;//move timeline quantumTime units
+                run(running, quantumTime);
 
-                running->burst -= QUANTUM;
+                running->burst -= quantumTime;
                 remove(&head, running);//removes running task from list
-                add(running->name, running->priority, running->burst);//adds process that is not finished to list to be run again later
+                add(running->name, running->priority, running->burst, running->quantumTime);//adds process that is not finished to list to be run again later
             }
             else { //task will finish during this runtime
                 timeLine += running->burst;//move timeline burst units

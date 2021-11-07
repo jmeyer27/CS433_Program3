@@ -22,7 +22,7 @@ int count = 1;//counts how many processes have the same priority
 
 
 // add a new task to the list of tasks
- void add(char *name, int priority, int burst) 
+ void add(char *name, int priority, int burst, int quantum) 
 {
 	//make new task and initialize
     Task *newTask = (Task *) malloc(sizeof(Task));
@@ -32,6 +32,7 @@ int count = 1;//counts how many processes have the same priority
     newTask->turnaroundTime = 0;
     newTask->waitingTime = 0;
     newTask->lastRunTime = 0;
+    newTask->quantumTime = quantum;
 
     //insert task into list
     insert(&head, newTask);

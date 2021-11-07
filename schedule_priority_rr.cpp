@@ -23,7 +23,7 @@ Task *pickNextTask();
 
 
 // adds a new task to the list of tasks
- void add(char *name, int priority, int burst) 
+ void add(char *name, int priority, int burst, int quantum) 
 {
     //make new task and initialize
     Task *newTask = (Task *) malloc(sizeof(Task));
@@ -33,6 +33,7 @@ Task *pickNextTask();
     newTask->turnaroundTime = 0;
     newTask->waitingTime = 0;
     newTask->lastRunTime = 0;
+    newTask->quantumTime = quantum;
 
     //insert task into list
     insert(&head, newTask);
@@ -51,16 +52,17 @@ void schedule()
     double averageWaitingTime = 0;
 
     while (head != NULL) {
-        running = pickNextTask();
+        running = pickNextTask();//picks next task
         running->waitingTime = (timeLine - running->lastRunTime) + running->waitingTime;
         if (count > 1){//if multiple tasks have same priority, is run as round robin
-            if (running->burst > QUANTUM) {
+        int quantumTime = running->quantumTime;
+            if (running->burst > quantumTime) {
                 
-                run(running, QUANTUM);//run program
-                timeLine += QUANTUM;//move timeline
-                running->burst -= QUANTUM;//update remaining burts
+                run(running, quantumTime);//run program
+                timeLine += quantumTime;//move timeline
+                running->burst -= quantumTime;//update remaining burts
                 remove(&head, running);//remove from list
-                add(running->name, running->priority, running->burst);//add to end of list
+                add(running->name, running->priority, running->burst,running->quantumTime);//add to end of list
                 running->lastRunTime += timeLine;//update the last run time after it is placed
                
             }

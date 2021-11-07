@@ -19,7 +19,7 @@ struct node *shoulders = NULL;
 
 
 // add a new task to the list of tasks
- void add(char *name, int priority, int burst) 
+ void add(char *name, int priority, int burst, int quantum) 
 {
 	//make new task and initialize
     Task *newTask = (Task *) malloc(sizeof(Task));
@@ -29,6 +29,7 @@ struct node *shoulders = NULL;
     newTask->turnaroundTime = 0;
     newTask->waitingTime = 0;
     newTask->lastRunTime = 0;//not really needed in fcfs but included
+    newTask->quantumTime = quantum;
 
     //insert task into list
     insert(&head, newTask);
